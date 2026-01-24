@@ -21,6 +21,7 @@ import com.rhinepereira.saints.home.HomeScreen
 import com.rhinepereira.saints.home.HomeViewModel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.rhinepereira.saints.ccc.CCCScreen
 
 @Composable
 fun NavGraph(
@@ -45,9 +46,16 @@ fun NavGraph(
                     when (categoryId) {
                         "daily-feast" -> navController.navigate("daily-feast-content")
                         "daily-readings" -> navController.navigate("daily-readings-content")
+                        "ccc" -> navController.navigate("ccc-content")
                         else -> navController.navigate(Screen.Category.createRoute(categoryId))
                     }
                 }
+            )
+        }
+
+        composable("ccc-content") {
+            CCCScreen(
+                onBack = { navController.popBackStack() }
             )
         }
 

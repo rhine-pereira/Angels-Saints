@@ -14,7 +14,7 @@ import java.io.File
 object RetrofitClient {
 
     private const val BASE_URL =
-        "https://scarranger.github.io/angelsandsaints_data/content/"
+        "https://rhine-pereira.github.io/angelsandsaints_data/content/"
 
     private val moshi = Moshi.Builder()
         .add(KotlinJsonAdapterFactory())
@@ -45,9 +45,6 @@ object RetrofitClient {
                     request = request.newBuilder()
                         .header("Cache-Control", "public, only-if-cached, max-stale=" + 60 * 60 * 24 * 365)
                         .build()
-                } else {
-                    // Online: bypass cache for specific requests or use short-lived cache
-                    // But for our specific "max-age" logic, we handle it in network interceptor
                 }
                 chain.proceed(request)
             }
@@ -55,8 +52,6 @@ object RetrofitClient {
                 val request = chain.request()
                 val response = chain.proceed(request)
                 
-                // If the request specifically asks for no-cache (like our getHome), 
-                // we still let it through. Otherwise, we cache.
                 val cacheControl = request.header("Cache-Control")
                 if (cacheControl?.contains("no-cache") == true) {
                     response

@@ -227,6 +227,7 @@ fun CategoryCard(
             "daily-feast" -> R.drawable.daily_feast_1
             "apostles" -> R.drawable.peter_thumb
             "daily-readings" -> R.drawable.daily_reading_icon
+            "ccc" -> R.drawable.daily_reading_icon
             else -> null
         }
     }
