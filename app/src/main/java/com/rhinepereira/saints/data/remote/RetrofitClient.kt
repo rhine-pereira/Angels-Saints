@@ -53,6 +53,14 @@ object RetrofitClient {
                 val response = chain.proceed(request)
                 
                 val cacheControl = request.header("Cache-Control")
+                
+                // If it's a 404, we don't want to cache it forever as "not found"
+                if (!response.isSuccessful && response.code == 404) {
+                    return@addNetworkInterceptor response.newBuilder()
+                        .header("Cache-Control", "no-cache")
+                        .build()
+                }
+
                 if (cacheControl?.contains("no-cache") == true) {
                     response
                 } else {

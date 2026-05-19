@@ -22,10 +22,6 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Tab
-import androidx.compose.material3.TabRow
-import androidx.compose.material3.TabRowDefaults
-import androidx.compose.material3.TabRowDefaults.tabIndicatorOffset
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
@@ -92,30 +88,6 @@ fun DailyReadingsScreen(
         }
     ) { innerPadding ->
         Column(modifier = Modifier.fillMaxSize().padding(innerPadding)) {
-
-            val languages = listOf("English", "Marathi")
-            val selectedIndex = languages.indexOf(uiState.language)
-            
-            TabRow(
-                selectedTabIndex = selectedIndex,
-                containerColor = MaterialTheme.colorScheme.surface,
-                contentColor = MaterialTheme.colorScheme.primary,
-                indicator = { tabPositions ->
-                    if (selectedIndex < tabPositions.size) {
-                        TabRowDefaults.Indicator(
-                            Modifier.tabIndicatorOffset(tabPositions[selectedIndex])
-                        )
-                    }
-                }
-            ) {
-                languages.forEach { language ->
-                    Tab(
-                        selected = uiState.language == language,
-                        onClick = { viewModel.setLanguage(language) },
-                        text = { Text(language) }
-                    )
-                }
-            }
 
             DateNavigationRow(
                 date = uiState.date,

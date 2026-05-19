@@ -9,6 +9,7 @@ import android.net.Uri
 import android.os.Build
 import android.util.Log
 import androidx.core.app.NotificationCompat
+import androidx.core.content.ContextCompat
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
 import com.rhinepereira.saints.MainActivity
@@ -46,7 +47,8 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
 
         val channelId = "daily_readings_channel"
         val notificationBuilder = NotificationCompat.Builder(this, channelId)
-            .setSmallIcon(R.drawable.ic_launcher_foreground)
+            .setSmallIcon(R.drawable.ic_notification)
+            .setColor(ContextCompat.getColor(this, R.color.notification_color))
             .setContentTitle(title)
             .setContentText(messageBody)
             .setAutoCancel(true)
