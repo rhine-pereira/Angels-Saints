@@ -25,8 +25,5 @@ interface ContentApi {
     ): ContentResponse
 
     @GET
-    suspend fun getDailyFeast(@Url url: String): DailyFeastResponse
-
-    @GET
     suspend fun getDailyReadings(@Url url: String): DailyReadingsResponse
 }

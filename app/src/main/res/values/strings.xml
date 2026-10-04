@@ -1,3 +1,105 @@
 <resources>
     <string name="app_name">Angels and Saints</string>
+    <string name="brand">Angels &amp; Saints</string>
+
+    <string name="tab_today">Today</string>
+    <string name="tab_library">Library</string>
+    <string name="tab_catechism">Catechism</string>
+
+    <string name="action_back">Back</string>
+    <string name="action_language">Language</string>
+    <string name="action_namedays">Name-days</string>
+    <string name="action_notifications">Notifications</string>
+    <string name="action_search">Search</string>
+    <string name="action_clear">Clear</string>
+    <string name="action_retry">Try again</string>
+    <string name="back_to_today">Back to today</string>
+    <string name="previous_day">Previous day</string>
+    <string name="next_day">Next day</string>
+    <string name="lang_english">English</string>
+    <string name="lang_marathi">मराठी</string>
+
+    <string name="season_advent">Advent</string>
+    <string name="season_christmas">Christmas Time</string>
+    <string name="season_lent">Lent</string>
+    <string name="season_triduum">Paschal Triduum</string>
+    <string name="season_easter">Easter Time</string>
+    <string name="season_ordinary">Ordinary Time</string>
+    <string name="season_week">%1$s · Week %2$d</string>
+    <plurals name="countdown_days">
+        <item quantity="one">%2$s begins tomorrow</item>
+        <item quantity="other">%1$d days to %2$s</item>
+    </plurals>
+
+    <string name="season_about_advent">Four weeks of watchful waiting before Christmas: we prepare for Christ\'s coming at Bethlehem and at the end of time. Violet vestments; rose on Gaudete Sunday.</string>
+    <string name="season_about_christmas">From Christmas Eve to the Baptism of the Lord, the Church celebrates the Word made flesh. White and gold vestments.</string>
+    <string name="season_about_lent">Forty days of prayer, fasting and almsgiving from Ash Wednesday, walking with Christ toward his Passion. Violet vestments; rose on Laetare Sunday.</string>
+    <string name="season_about_triduum">Holy Thursday evening to Easter Sunday: the Lord\'s Supper, his Passion and death, and the vigil of the Resurrection. The heart of the whole year.</string>
+    <string name="season_about_easter">Fifty days of Easter joy, from the Resurrection to Pentecost, when the Holy Spirit descends on the Apostles. White vestments; red at Pentecost.</string>
+    <string name="season_about_ordinary">The longest season: the Church follows the public life and teaching of Jesus week by week. Green vestments, the colour of growth.</string>
+
+    <string name="rank_solemnity">Solemnity</string>
+    <string name="rank_sunday">Sunday</string>
+    <string name="rank_feast">Feast</string>
+    <string name="rank_memorial">Memorial</string>
+    <string name="rank_optional_memorial">Optional memorial</string>
+    <string name="rank_weekday">Weekday</string>
+    <string name="vest_green">Green</string>
+    <string name="vest_purple">Violet</string>
+    <string name="vest_white">White</string>
+    <string name="vest_red">Red</string>
+    <string name="vest_rose">Rose</string>
+    <string name="vest_black">Black</string>
+    <string name="vest_gold">Gold</string>
+    <string name="rank_and_colour">%1$s · %2$s vestments</string>
+    <string name="also_today">Also: %1$s</string>
+    <string name="calendar_missing">This date is outside the bundled calendar.</string>
+
+    <string name="readings_title">Readings</string>
+    <string name="readings_none">Readings for this day aren\'t published yet.</string>
+    <string name="readings_offline">You\'re offline and these readings aren\'t saved yet. Connect once and they\'ll stay on your phone.</string>
+    <string name="readings_source_drb">Scripture: Douay-Rheims Bible</string>
+    <string name="label_response">Response</string>
+    <string name="label_acclamation">Acclamation</string>
+    <string name="wheel_description">Liturgical year. Drag around the ring to choose a day; tap a season to learn about it.</string>
+
+    <string name="nameday_title">Name-days</string>
+    <string name="nameday_intro">Add your baptismal name and those of your family. On each patron\'s feast, Today greets you and a reminder arrives in the morning.</string>
+    <string name="nameday_person">Name</string>
+    <string name="nameday_saint">Patron saint</string>
+    <string name="nameday_saint_hint">Type to search saints</string>
+    <string name="nameday_pick">Pick the patron for %1$s</string>
+    <string name="nameday_no_match">No saint in the calendar matches that name.</string>
+    <string name="nameday_remove">Remove %1$s</string>
+    <string name="nameday_greeting">Happy feast day, %1$s!</string>
+    <string name="nameday_patron">Feast of %1$s</string>
+    <string name="nameday_channel">Name-day greetings</string>
+    <string name="nameday_empty">No name-days yet.</string>
+
+    <string name="library_title">Library</string>
+    <string name="ccc_title">Catechism</string>
+    <string name="ccc_search_hint">Search paragraphs</string>
+    <string name="ccc_no_results">No paragraphs match \"%1$s\".</string>
+
+    <string name="error_network_title">No connection</string>
+    <string name="error_network_body">Check your internet connection. Anything you\'ve opened before is still available offline.</string>
+    <string name="error_notfound_title">Not found</string>
+    <string name="error_notfound_body">This content isn\'t available any more.</string>
+    <string name="error_unknown_title">Something went wrong</string>
+    <string name="error_unknown_body">Please try again in a moment.</string>
+    <string name="content_empty_title">Coming soon</string>
+    <string name="content_empty_body">This entry is still being written.</string>
+
+    <string name="notification_permission_title">Stay connected to your faith</string>
+    <string name="notification_permission_why">Notifications help Angels &amp; Saints gently remind you to pause for prayer and Scripture throughout your day.</string>
+    <string name="notification_permission_benefits_header">You will receive:</string>
+    <string name="notification_permission_benefit_daily_readings">A daily reminder when new Bible readings are ready</string>
+    <string name="notification_permission_benefit_feast_days">Greetings on your family\'s name-days</string>
+    <string name="notification_permission_benefit_spiritual">Occasional spiritual encouragement to keep your prayer routine</string>
+    <string name="notification_permission_allow">Allow notifications</string>
+    <string name="notification_permission_later">Maybe later</string>
+    <string name="notification_enabled_snackbar">You are now receiving daily Bible reminders</string>
+    <string name="notification_already_enabled_snackbar">You are receiving daily Bible reminders</string>
+    <string name="notification_disabled_settings_snackbar">Notifications are disabled in settings</string>
+    <string name="notification_channel_daily">Daily Spiritual Reminders</string>
 </resources>

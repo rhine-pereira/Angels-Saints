@@ -6,53 +6,28 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import com.rhinepereira.saints.data.model.ContentBlock
+import com.rhinepereira.saints.ui.theme.ReadingText
 
 @Composable
 fun ContentBlockRenderer(block: ContentBlock) {
-    val blockValue = block.value ?: return // Don't render if value is null
-    
+    val value = block.value?.takeIf { it.isNotBlank() } ?: return
     when (block.type) {
-        "heading" -> {
-            Text(
-                text = blockValue,
-                style = MaterialTheme.typography.headlineSmall,
-                fontWeight = FontWeight.Bold,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(top = 16.dp, bottom = 8.dp)
-            )
-        }
-        "text" -> {
-            Text(
-                text = blockValue,
-                style = MaterialTheme.typography.bodyLarge,
-                lineHeight = MaterialTheme.typography.bodyLarge.lineHeight * 1.3,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(vertical = 8.dp)
-            )
-        }
-        "image" -> {
-            AsyncImage(
-                model = blockValue,
-                contentDescription = null,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(vertical = 16.dp),
-                contentScale = ContentScale.FillWidth
-            )
-        }
-        else -> {
-            Text(
-                text = blockValue,
-                style = MaterialTheme.typography.bodySmall,
-                modifier = Modifier.padding(vertical = 4.dp)
-            )
-        }
+        "heading" -> Text(
+            value,
+            style = MaterialTheme.typography.titleLarge,
+            modifier = Modifier.fillMaxWidth().padding(top = 16.dp)
+        )
+        "image" -> AsyncImage(
+            model = value,
+            contentDescription = null,
+            contentScale = ContentScale.FillWidth,
+            modifier = Modifier.fillMaxWidth().clip(MaterialTheme.shapes.medium)
+        )
+        else -> Text(value, style = ReadingText, modifier = Modifier.fillMaxWidth())
     }
 }

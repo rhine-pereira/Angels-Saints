@@ -1,102 +1,76 @@
 package com.rhinepereira.saints.ui.components
 
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Warning
-import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.Icon
+import androidx.compose.foundation.layout.widthIn
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import com.rhinepereira.saints.R
 import com.rhinepereira.saints.data.model.UiError
 
 @Composable
 fun ErrorState(
     error: UiError,
-    onRetry: () -> Unit
+    onRetry: () -> Unit,
+    modifier: Modifier = Modifier
 ) {
-    val title: String
-    val message: String
-    val icon: ImageVector
-
-    when (error) {
-        UiError.Network -> {
-            title = "No Connection"
-            message = "Please check your internet connection. We'll try to load from cache if available."
-            icon = Icons.Default.Warning
-        }
-        UiError.NotFound -> {
-            title = "Not Found"
-            message = "The requested content could not be found. It might have been moved."
-            icon = Icons.Default.Warning
-        }
-        is UiError.Unknown -> {
-            title = "Something went wrong"
-            message = error.message ?: "An unexpected error occurred. Please try again later."
-            icon = Icons.Default.Warning
-        }
+    val (title, body) = when (error) {
+        UiError.Network -> R.string.error_network_title to R.string.error_network_body
+        UiError.NotFound -> R.string.error_notfound_title to R.string.error_notfound_body
+        is UiError.Unknown -> R.string.error_unknown_title to R.string.error_unknown_body
     }
+    MessageState(
+        title = stringResource(title),
+        body = stringResource(body),
+        modifier = modifier,
+        action = {
+            OutlinedButton(onClick = onRetry) { Text(stringResource(R.string.action_retry)) }
+        }
+    )
+}
 
+/** Calm, centred message: empty, offline and error states all share it. */
+@Composable
+fun MessageState(
+    title: String,
+    body: String,
+    modifier: Modifier = Modifier,
+    action: (@Composable () -> Unit)? = null
+) {
     Column(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxSize()
-            .padding(32.dp),
-        verticalArrangement = Arrangement.Center,
+            .padding(horizontal = 32.dp, vertical = 48.dp),
+        verticalArrangement = Arrangement.spacedBy(12.dp, Alignment.CenterVertically),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Icon(
-            imageVector = icon,
-            contentDescription = null,
-            modifier = Modifier.size(80.dp),
-            tint = MaterialTheme.colorScheme.error.copy(alpha = 0.8f)
-        )
-        
-        Spacer(modifier = Modifier.height(24.dp))
-        
+        TrimRule(Modifier.widthIn(max = 48.dp))
+        Text(title, style = MaterialTheme.typography.headlineMedium, textAlign = TextAlign.Center)
         Text(
-            text = title,
-            style = MaterialTheme.typography.headlineSmall,
-            fontWeight = FontWeight.Bold,
-            color = MaterialTheme.colorScheme.onBackground
-        )
-        
-        Spacer(modifier = Modifier.height(12.dp))
-        
-        Text(
-            text = message,
+            body,
             style = MaterialTheme.typography.bodyLarge,
+            color = MaterialTheme.colorScheme.onSurfaceVariant,
             textAlign = TextAlign.Center,
-            color = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.6f)
+            modifier = Modifier.widthIn(max = 360.dp)
         )
-        
-        Spacer(modifier = Modifier.height(32.dp))
-        
-        Button(
-            onClick = onRetry,
-            modifier = Modifier.height(48.dp),
-            colors = ButtonDefaults.buttonColors(
-                containerColor = MaterialTheme.colorScheme.primary
-            ),
-            shape = MaterialTheme.shapes.medium
-        ) {
-            Text(
-                text = "Try Again",
-                style = MaterialTheme.typography.labelLarge,
-                modifier = Modifier.padding(horizontal = 16.dp)
-            )
-        }
+        action?.invoke()
+    }
+}
+
+@Composable
+fun LoadingState(modifier: Modifier = Modifier) {
+    Box(modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+        CircularProgressIndicator(color = MaterialTheme.colorScheme.primary)
     }
 }

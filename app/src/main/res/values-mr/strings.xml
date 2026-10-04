@@ -1,0 +1,103 @@
+<resources>
+    <!-- Machine-drafted Marathi: please proofread before release. -->
+    <string name="brand">देवदूत आणि संत</string>
+
+    <string name="tab_today">आज</string>
+    <string name="tab_library">ग्रंथालय</string>
+    <string name="tab_catechism">धर्मशिक्षण</string>
+
+    <string name="action_back">मागे</string>
+    <string name="action_language">भाषा</string>
+    <string name="action_namedays">नावाचे सण</string>
+    <string name="action_notifications">सूचना</string>
+    <string name="action_search">शोधा</string>
+    <string name="action_clear">पुसा</string>
+    <string name="action_retry">पुन्हा प्रयत्न करा</string>
+    <string name="back_to_today">आजच्या दिवसाकडे</string>
+    <string name="previous_day">मागील दिवस</string>
+    <string name="next_day">पुढील दिवस</string>
+
+    <string name="season_advent">आगमनकाळ</string>
+    <string name="season_christmas">नाताळ काळ</string>
+    <string name="season_lent">उपवासकाळ</string>
+    <string name="season_triduum">पवित्र त्रिदिन</string>
+    <string name="season_easter">पुनरुत्थानकाळ</string>
+    <string name="season_ordinary">सामान्य काळ</string>
+    <string name="season_week">%1$s · आठवडा %2$d</string>
+    <plurals name="countdown_days">
+        <item quantity="one">%2$s उद्यापासून</item>
+        <item quantity="other">%2$s सुरू होण्यास %1$d दिवस</item>
+    </plurals>
+
+    <string name="season_about_advent">नाताळपूर्वीचे चार आठवडे जागृत प्रतीक्षेचे: बेथलेहेममधील आणि युगान्ती येणाऱ्या ख्रिस्ताच्या आगमनाची तयारी. जांभळी वस्त्रे; गौडेते रविवारी गुलाबी.</string>
+    <string name="season_about_christmas">नाताळच्या पूर्वसंध्येपासून प्रभूच्या बाप्तिस्म्यापर्यंत देहधारी शब्दाचा उत्सव. पांढरी व सोनेरी वस्त्रे.</string>
+    <string name="season_about_lent">राखेच्या बुधवारपासून चाळीस दिवस प्रार्थना, उपवास आणि दानधर्म; ख्रिस्ताच्या दुःखसहनाकडे वाटचाल. जांभळी वस्त्रे; लेतारे रविवारी गुलाबी.</string>
+    <string name="season_about_triduum">पवित्र गुरुवारच्या संध्याकाळपासून पास्काच्या रविवारपर्यंत: प्रभुभोजन, दुःखसहन व मरण, आणि पुनरुत्थानाची जागरण-विधी. संपूर्ण वर्षाचे हृदय.</string>
+    <string name="season_about_easter">पुनरुत्थानापासून पेन्तेकॉस्तपर्यंत पन्नास दिवसांचा आनंद, जेव्हा पवित्र आत्मा प्रेषितांवर उतरतो. पांढरी वस्त्रे; पेन्तेकॉस्तला लाल.</string>
+    <string name="season_about_ordinary">सर्वात मोठा काळ: येशूचे सार्वजनिक जीवन व शिकवण आठवड्यागणिक. हिरवी वस्त्रे, वाढीचा रंग.</string>
+
+    <string name="rank_solemnity">महासण</string>
+    <string name="rank_sunday">रविवार</string>
+    <string name="rank_feast">सण</string>
+    <string name="rank_memorial">स्मृतिदिन</string>
+    <string name="rank_optional_memorial">ऐच्छिक स्मृतिदिन</string>
+    <string name="rank_weekday">सामान्य दिवस</string>
+    <string name="vest_green">हिरवी</string>
+    <string name="vest_purple">जांभळी</string>
+    <string name="vest_white">पांढरी</string>
+    <string name="vest_red">लाल</string>
+    <string name="vest_rose">गुलाबी</string>
+    <string name="vest_black">काळी</string>
+    <string name="vest_gold">सोनेरी</string>
+    <string name="rank_and_colour">%1$s · %2$s वस्त्रे</string>
+    <string name="also_today">तसेच: %1$s</string>
+    <string name="calendar_missing">ही तारीख समाविष्ट दिनदर्शिकेबाहेर आहे.</string>
+
+    <string name="readings_title">वाचने</string>
+    <string name="readings_none">या दिवसाची वाचने अद्याप प्रसिद्ध झालेली नाहीत.</string>
+    <string name="readings_offline">तुम्ही ऑफलाइन आहात आणि ही वाचने अद्याप जतन झालेली नाहीत. एकदा इंटरनेट जोडा, मग ती फोनवर राहतील.</string>
+    <string name="readings_source_drb">पवित्र शास्त्र: डुए-ऱ्हाइम्स बायबल</string>
+    <string name="label_response">प्रतिसाद</string>
+    <string name="label_acclamation">घोषणा</string>
+    <string name="wheel_description">उपासना वर्ष. दिवस निवडण्यासाठी वर्तुळावर बोट फिरवा; माहितीसाठी काळावर टॅप करा.</string>
+
+    <string name="nameday_title">नावाचे सण</string>
+    <string name="nameday_intro">तुमचे व कुटुंबीयांचे बाप्तिस्म्याचे नाव जोडा. आश्रयदात्या संताच्या सणाला ‘आज’ पानावर शुभेच्छा आणि सकाळी आठवण मिळेल.</string>
+    <string name="nameday_person">नाव</string>
+    <string name="nameday_saint">आश्रयदाता संत</string>
+    <string name="nameday_saint_hint">संत शोधण्यासाठी टाइप करा</string>
+    <string name="nameday_pick">%1$s साठी आश्रयदाता संत निवडा</string>
+    <string name="nameday_no_match">या नावाचा संत दिनदर्शिकेत नाही.</string>
+    <string name="nameday_remove">%1$s काढा</string>
+    <string name="nameday_greeting">नावाच्या सणाच्या शुभेच्छा, %1$s!</string>
+    <string name="nameday_patron">%1$s यांचा सण</string>
+    <string name="nameday_channel">नावाच्या सणाच्या शुभेच्छा</string>
+    <string name="nameday_empty">अद्याप एकही नावाचा सण नाही.</string>
+
+    <string name="library_title">ग्रंथालय</string>
+    <string name="ccc_title">धर्मशिक्षण</string>
+    <string name="ccc_search_hint">परिच्छेद शोधा</string>
+    <string name="ccc_no_results">\"%1$s\" शी जुळणारा परिच्छेद नाही.</string>
+
+    <string name="error_network_title">इंटरनेट नाही</string>
+    <string name="error_network_body">इंटरनेट जोडणी तपासा. आधी उघडलेले सर्व ऑफलाइनही उपलब्ध आहे.</string>
+    <string name="error_notfound_title">सापडले नाही</string>
+    <string name="error_notfound_body">हा मजकूर आता उपलब्ध नाही.</string>
+    <string name="error_unknown_title">काहीतरी चुकले</string>
+    <string name="error_unknown_body">कृपया थोड्या वेळाने पुन्हा प्रयत्न करा.</string>
+    <string name="content_empty_title">लवकरच</string>
+    <string name="content_empty_body">हा मजकूर अद्याप लिहिला जात आहे.</string>
+
+    <string name="notification_permission_title">श्रद्धेशी जोडलेले राहा</string>
+    <string name="notification_permission_why">सूचनांमुळे दिवसभरात प्रार्थना व पवित्र शास्त्रासाठी थांबण्याची हळुवार आठवण मिळते.</string>
+    <string name="notification_permission_benefits_header">तुम्हाला मिळेल:</string>
+    <string name="notification_permission_benefit_daily_readings">नवीन वाचने तयार झाल्यावर रोजची आठवण</string>
+    <string name="notification_permission_benefit_feast_days">कुटुंबीयांच्या नावाच्या सणांच्या शुभेच्छा</string>
+    <string name="notification_permission_benefit_spiritual">प्रार्थनेची सवय टिकवण्यासाठी अधूनमधून प्रोत्साहन</string>
+    <string name="notification_permission_allow">सूचना सुरू करा</string>
+    <string name="notification_permission_later">नंतर</string>
+    <string name="notification_enabled_snackbar">आता तुम्हाला रोजच्या वाचनांची आठवण मिळेल</string>
+    <string name="notification_already_enabled_snackbar">तुम्हाला रोजच्या वाचनांची आठवण मिळत आहे</string>
+    <string name="notification_disabled_settings_snackbar">सेटिंग्जमध्ये सूचना बंद आहेत</string>
+    <string name="notification_channel_daily">रोजच्या आध्यात्मिक आठवणी</string>
+</resources>

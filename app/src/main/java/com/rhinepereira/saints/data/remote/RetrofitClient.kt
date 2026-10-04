@@ -10,6 +10,7 @@ import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import java.io.File
+import java.util.concurrent.TimeUnit
 
 object RetrofitClient {
 
@@ -17,6 +18,7 @@ object RetrofitClient {
         "https://rhine-pereira.github.io/angelsandsaints_data/content/"
 
     private val moshi = Moshi.Builder()
+        .add(NetworkJsonAdapters())
         .add(KotlinJsonAdapterFactory())
         .build()
 
@@ -38,6 +40,10 @@ object RetrofitClient {
 
         val okHttpClient = OkHttpClient.Builder()
             .cache(cache)
+            // Fail into the offline state quickly instead of spinning on a dead network.
+            .connectTimeout(8, TimeUnit.SECONDS)
+            .readTimeout(12, TimeUnit.SECONDS)
+            .callTimeout(20, TimeUnit.SECONDS)
             .addInterceptor { chain ->
                 var request = chain.request()
                 if (!isNetworkAvailable(context)) {

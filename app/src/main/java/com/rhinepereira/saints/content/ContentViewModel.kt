@@ -9,11 +9,13 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.catch
-import kotlinx.coroutines.flow.onStart
-import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
-import retrofit2.HttpException
-import java.io.IOException
+
+data class ContentState(
+    val loading: Boolean = true,
+    val content: ContentResponse? = null,
+    val error: UiError? = null
+)
 
 class ContentViewModel(
     private val repository: ContentRepository,
@@ -21,64 +23,17 @@ class ContentViewModel(
     private val contentId: String
 ) : ViewModel() {
 
-    private val _uiState = MutableStateFlow(ContentState())
-    val uiState: StateFlow<ContentState> = _uiState.asStateFlow()
+    private val _state = MutableStateFlow(ContentState())
+    val state: StateFlow<ContentState> = _state.asStateFlow()
 
-    init {
-        loadContent()
-    }
+    init { load() }
 
-    fun retry() {
-        loadContent()
-    }
-
-    private fun loadContent() {
+    fun load() {
+        _state.value = ContentState()
         viewModelScope.launch {
-            val isDailyFeast = categoryId.trim().lowercase() == "daily-feast"
-            
-            val contentFlow = if (isDailyFeast) {
-                repository.getDailyFeast()
-            } else {
-                repository.getContent(contentId)
-            }
-
-            contentFlow
-                .onStart { 
-                    _uiState.update { it.copy(isLoading = true, error = null) } 
-                }
-                .catch { e ->
-                    val uiError = mapError(e)
-                    _uiState.update { it.copy(isLoading = false, error = uiError) }
-                }
-                .collect { response ->
-                    val finalResponse = when (response) {
-                        is com.rhinepereira.saints.data.remote.DailyFeastResponse -> {
-                            ContentResponse(
-                                id = "daily-feast",
-                                title = response.observance?.title ?: "Daily Feast",
-                                blocks = response.blocks
-                            )
-                        }
-                        is ContentResponse -> response
-                        else -> null
-                    }
-
-                    _uiState.update {
-                        it.copy(
-                            isLoading = false,
-                            content = finalResponse,
-                            error = null
-                        )
-                    }
-                }
-        }
-    }
-
-    private fun mapError(e: Throwable): UiError {
-        return when (e) {
-            is IOException -> UiError.Network
-            is HttpException -> if (e.code() == 404) UiError.NotFound else UiError.Unknown(e.message())
-            else -> UiError.Unknown(e.message)
+            repository.getContent(contentId)
+                .catch { _state.value = ContentState(loading = false, error = UiError.from(it)) }
+                .collect { _state.value = ContentState(loading = false, content = it) }
         }
     }
 }

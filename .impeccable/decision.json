@@ -1,0 +1,123 @@
+{
+  "title": "Angels & Saints: choose the visual world",
+  "question": "The roll assigned Kurus at the Village Gate. Keep it, take an alternate, or re-roll.",
+  "options": [
+    {
+      "id": "assigned",
+      "label": "Kurus at the Village Gate",
+      "kicker": "THE ROLL",
+      "lineage": "Vasai / East Indian wayside crosses: limewashed, indigo-trimmed, marigold-garlanded, lamp-lit",
+      "thesis": "Today is a painted plaque at the village gate: the date, the feast, the Word, garlanded fresh each morning.",
+      "palette": ["#F3F5F2", "#22305C", "#F2A007", "#8A3B24", "#121A33"],
+      "materials": ["limewash plaster", "indigo trim lines", "signpainted lettering (Latin + Devanagari)", "marigold garland", "oil-lamp glow (dark theme)"],
+      "viewport": "Today tab: huge signpainted day numeral and season on chalk-white, an indigo-ruled plaque with the feast, then reading plates I–IV; marigold marks only what is live today.",
+      "risk": "Regional: Catholics outside the Vasai/Mumbai belt read it as Indian-devotional rather than recognising the crosses; signpaint type goes kitsch if overused beyond display.",
+      "raised": [
+        {"from": "challenger-folio", "raise": "Every reading is a fixed-anatomy plate (number, kind, reference, text) on one shared baseline, identical every day."},
+        {"from": "challenger-bench", "raise": "A folded marigold flag marks where you stopped reading; it persists and re-flags on return."},
+        {"from": "challenger-cathode", "raise": "The date strip keeps neighbouring days as ghosted numerals; today is struck forward in marigold."},
+        {"from": "challenger-cyc", "raise": "Liturgical season is a named phase with its own trim pattern, never colour alone."}
+      ]
+    },
+    {
+      "id": "model-pick",
+      "label": "Missal Rubrics",
+      "kicker": "IMPECCABLE’S PICK",
+      "lineage": "the altar Missal and Lectionary: black text, red rubrics, silk ribbon markers",
+      "thesis": "Say the black, do the red: the app is set like the book on the altar.",
+      "palette": ["#F2EDE2", "#1B1815", "#A3221B", "#2E5E3A"],
+      "materials": ["bible paper", "two-colour letterpress", "silk ribbon markers", "drop capitals"],
+      "viewport": "Today opens as a Lectionary page: red rubric heading, black readings, a ribbon in the season colour hanging from the top edge.",
+      "risk": "Cream + serif + red is exactly where most runs in this category land; it can look like every other missal app."
+    },
+    {
+      "id": "challenger-cyc",
+      "label": "Cyclorama Dawn",
+      "verdict": "competitive",
+      "lineage": "theatre cyclorama lighting, night to day",
+      "thesis": "The app's light follows the day: night-black for Compline, cobalt and rose at dawn, white at Mass.",
+      "palette": ["#0A0A0F", "#1F3FA8", "#E79AA6", "#FFFFFF"],
+      "materials": ["light wash", "horizon bands", "stencil cue labels"],
+      "viewport": "Today screen as horizon bands from dark to light, the reading you are on in the brightest band.",
+      "case": "Holds product clarity (the daily ritual and dark/light map cleanly) but the audience has no tie to stage lighting.",
+      "risk": "Atmosphere over legibility if the bands carry long Marathi text."
+    },
+    {
+      "id": "challenger-folio",
+      "label": "Botanical Folio",
+      "verdict": "declined",
+      "lineage": "seasonal botanical plates",
+      "thesis": "The liturgical year as one plant through its seasons.",
+      "palette": ["#F4EEDF", "#3F6B3A", "#B8261E", "#6B6B66"],
+      "materials": ["engraved plates", "sepia hairlines"],
+      "viewport": "Fixed-scale plates per season.",
+      "case": "Loses both axes: no audience tie, and the metaphor needs explaining.",
+      "kept": "Fixed-anatomy plates on a shared baseline.",
+      "risk": "Cream-and-engraving rut."
+    },
+    {
+      "id": "challenger-bench",
+      "label": "Cutting Bench",
+      "verdict": "declined",
+      "lineage": "film editing bench",
+      "thesis": "Readings strung along a perforated rail.",
+      "palette": ["#000000", "#F26B1D", "#FFFFFF"],
+      "materials": ["film grain", "tape flags"],
+      "viewport": "A select rail with frames per reading.",
+      "case": "Loses both axes: an editor's tool, not a devotional object.",
+      "kept": "The folded flag where you stopped.",
+      "risk": "Costume of a tool."
+    },
+    {
+      "id": "challenger-cathode",
+      "label": "Struck Cathode",
+      "verdict": "declined",
+      "lineage": "Nixie tube counters",
+      "thesis": "Every date present as a ghost; today struck in orange.",
+      "palette": ["#0D1220", "#FF7A1A", "#B08D57"],
+      "materials": ["wire gauze", "glow"],
+      "viewport": "Ghosted numeral stack with today lit.",
+      "case": "Loses both axes: techno-nostalgia against a reverent brief.",
+      "kept": "Neighbouring days as ghosts, today struck forward.",
+      "risk": "Reads as a gadget."
+    },
+    {
+      "id": "challenger-zoo",
+      "label": "Garden Guide Map",
+      "verdict": "declined",
+      "lineage": "zoo guide maps",
+      "thesis": "Library sections as swelling colour lobes.",
+      "palette": ["#8ED462", "#F5F1E4", "#2C2E2A", "#FF705D"],
+      "materials": ["flat colour", "SVG coastlines"],
+      "viewport": "Library as a map.",
+      "case": "Loses both axes: playful register fights reverence.",
+      "kept": "Total commitment to flat colour fields.",
+      "risk": "Toy-like."
+    },
+    {
+      "id": "challenger-brick",
+      "label": "Build Instructions",
+      "verdict": "declined",
+      "lineage": "brick instruction booklets",
+      "thesis": "Numbered steps through the liturgy.",
+      "palette": ["#9FD3F0", "#000000", "#D0021B", "#F8D200"],
+      "materials": ["stud grid", "keylines"],
+      "viewport": "Readings as numbered steps.",
+      "case": "Loses both axes.",
+      "kept": "Strict numbered sequence.",
+      "risk": "Childish."
+    }
+  ],
+  "reroll": { "registers": ["safer", "bolder"] },
+  "buildPath": { "value": "code" },
+  "canon": true,
+  "canonCard": {
+    "label": "The category standard",
+    "thesis": "A Catholic Material 3 app done right: burgundy and gold, tonal surfaces, saint artwork cards.",
+    "palette": ["#FFFBF7", "#7A1F2B", "#C9A23A", "#2B2321"],
+    "materials": ["Material 3 tonal surfaces", "saint artwork"],
+    "viewport": "Today card stack: feast card with art, readings cards, bottom nav.",
+    "risk": "Indistinguishable from Laudate, Hallow-lite and every parish app."
+  },
+  "steer": true
+}

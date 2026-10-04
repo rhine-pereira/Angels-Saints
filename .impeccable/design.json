@@ -1,0 +1,12 @@
+{
+  "world": "kurus-village-gate",
+  "seed": "152c6277",
+  "color": {
+    "light": {"background": "#F3F5F2", "onSurface": "#1B2547", "primary": "#22305C", "secondary": "#7A4D00", "secondaryContainer": "#F2A007", "tertiary": "#8A3B24", "outline": "#5A6382", "outlineVariant": "#C5CAD6"},
+    "dark": {"background": "#121A33", "onSurface": "#ECE6D6", "primary": "#C9D3F5", "secondary": "#FFB940", "secondaryContainer": "#F2A007", "tertiary": "#F0A58C", "outline": "#8890AE", "outlineVariant": "#343E62"},
+    "vestment": {"green": "#2F6B3F", "purple": "#5B2A6E", "white": "#D8C68A", "red": "#A3241C", "rose": "#C9607F", "black": "#2B2B2B", "gold": "#B8862B"}
+  },
+  "type": {"display": "Yatra One", "ui": "Mukta", "reading": "Martel 18/32sp"},
+  "shape": {"plaque": "4dp radius + 1.5dp trim", "art": "6dp", "sheet": "28dp"},
+  "spacing": {"pageMargin": "24dp"}
+}

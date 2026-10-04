@@ -2,27 +2,24 @@ package com.rhinepereira.saints.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
-val Gold80 = Color(0xFFFFD700)
-val GoldGrey80 = Color(0xFFCCC2A1)
-val Cream80 = Color(0xFFFFFDD0)
+// Kurus palette: limewash, indigo trim, marigold garland, laterite, lamp-lit night.
+val Limewash = Color(0xFFF3F5F2)
+val LimewashDeep = Color(0xFFE4E8E4)
+val Indigo = Color(0xFF22305C)
+val IndigoInk = Color(0xFF1B2547)
+val IndigoNight = Color(0xFF121A33)
+val Marigold = Color(0xFFF2A007)
+val MarigoldInk = Color(0xFF7A4D00)
+val MarigoldGlow = Color(0xFFFFB940)
+val Laterite = Color(0xFF8A3B24)
+val LateriteGlow = Color(0xFFF0A58C)
+val LampWhite = Color(0xFFECE6D6)
 
-val Gold40 = Color(0xFFD4AF37)
-val GoldGrey40 = Color(0xFF625B39)
-val Cream40 = Color(0xFFF5F5DC)
-
-val DeepBurgundy = Color(0xFF4A0E0E)
-val SoftGold = Color(0xFFF9E79F)
-val RichBlack = Color(0xFF1A1A1A)
-
-// Core Brand Colors
-val DeepBurgundy2 = Color(0xFF800020)  // Traditional, regal
-val PapalGold = Color(0xFFD4AF37)     // Metallic/Sacred feel
-val GoldVariant = Color(0xFFB8860B)   // Deeper gold for contrast
-
-// Light Mode Accents
-val CreamBackground = Color(0xFFFDFCF5) // Aged paper/parchment
-val MarbleWhite = Color(0xFFFFFFFF)
-
-// Dark Mode Accents
-val DeepCharcoal = Color(0xFF121212)
-val MidnightBlue = Color(0xFF1A1C1E)   // Alternative to black for depth
+// Vestment colours (light, dark)
+val VestGreen = Color(0xFF2F6B3F) to Color(0xFF7BBF8A)
+val VestPurple = Color(0xFF5B2A6E) to Color(0xFFC39AD6)
+val VestWhite = Color(0xFFD8C68A) to Color(0xFFEDE0B0)
+val VestRed = Color(0xFFA3241C) to Color(0xFFF08A80)
+val VestRose = Color(0xFFC9607F) to Color(0xFFF2A9BE)
+val VestBlack = Color(0xFF2B2B2B) to Color(0xFF9A9A9A)
+val VestGold = Color(0xFFB8862B) to Color(0xFFE8C46A)

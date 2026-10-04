@@ -13,3 +13,7 @@
 .externalNativeBuild
 .cxx
 local.properties
+tools/calendar-gen/node_modules
+.impeccable/review/
+.impeccable/serve.log
+.impeccable/wip-*.patch

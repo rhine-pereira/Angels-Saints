@@ -1,0 +1,13 @@
+{
+  "name": "calendar-gen",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "gen": "node generate.mjs",
+    "check": "node check.mjs"
+  },
+  "dependencies": {
+    "@romcal/calendar.india": "3.0.0-dev.140",
+    "romcal": "3.0.0-dev.140"
+  }
+}

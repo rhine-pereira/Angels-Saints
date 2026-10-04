@@ -26,16 +26,6 @@ data class ContentResponse(
     @Json(name = "versions") val versions: List<ContentVersion>? = null
 )
 
-data class DailyFeastResponse(
-    @Json(name = "date") val date: String?,
-    @Json(name = "observance") val observance: Observance?,
-    @Json(name = "blocks") val blocks: List<ContentBlock>? = emptyList()
-)
-
-data class Observance(
-    @Json(name = "title") val title: String?
-)
-
 data class DailyReadingsResponse(
     @Json(name = "date") val date: String?,
     @Json(name = "url") val url: String?,

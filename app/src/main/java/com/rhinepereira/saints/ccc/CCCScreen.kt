@@ -1,147 +1,98 @@
 package com.rhinepereira.saints.ccc
 
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.Search
-import androidx.compose.material3.*
-import androidx.compose.runtime.*
-import androidx.compose.ui.Alignment
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.OutlinedTextFieldDefaults
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.input.ImeAction
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
-import androidx.lifecycle.viewmodel.compose.viewModel
+import com.rhinepereira.saints.R
 import com.rhinepereira.saints.ui.components.ErrorState
+import com.rhinepereira.saints.ui.components.KurusTopBar
+import com.rhinepereira.saints.ui.components.LoadingState
+import com.rhinepereira.saints.ui.components.MessageState
+import com.rhinepereira.saints.ui.components.TrimRule
+import com.rhinepereira.saints.ui.theme.Kurus
+import com.rhinepereira.saints.ui.theme.ReadingText
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun CCCScreen(
-    onBack: () -> Unit
-) {
-    val context = LocalContext.current
-    val viewModel: CCCViewModel = viewModel(factory = CCCViewModelFactory(context))
-    val uiState by viewModel.uiState.collectAsState()
-    
-    var isSearchActive by remember { mutableStateOf(false) }
-    var searchQuery by remember { mutableStateOf("") }
+fun CCCScreen(viewModel: CCCViewModel) {
+    val state by viewModel.state.collectAsState()
 
-    Scaffold(
-        topBar = {
-            if (isSearchActive) {
-                TopAppBar(
-                    title = {
-                        TextField(
-                            value = searchQuery,
-                            onValueChange = { 
-                                searchQuery = it
-                                viewModel.search(it)
-                            },
-                            placeholder = { Text("Search by ID or text...") },
-                            modifier = Modifier.fillMaxWidth(),
-                            colors = TextFieldDefaults.colors(
-                                focusedContainerColor = Color.Transparent,
-                                unfocusedContainerColor = Color.Transparent,
-                                focusedIndicatorColor = Color.Transparent,
-                                unfocusedIndicatorColor = Color.Transparent
-                            ),
-                            singleLine = true
-                        )
-                    },
-                    navigationIcon = {
-                        IconButton(onClick = { 
-                            isSearchActive = false
-                            searchQuery = ""
-                            viewModel.search("")
-                        }) {
-                            Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Back")
-                        }
-                    },
-                    actions = {
-                        if (searchQuery.isNotEmpty()) {
-                            IconButton(onClick = { 
-                                searchQuery = ""
-                                viewModel.search("")
-                            }) {
-                                Icon(Icons.Default.Close, contentDescription = "Clear")
+    Scaffold(topBar = { KurusTopBar(stringResource(R.string.ccc_title)) }) { padding ->
+        val modifier = Modifier.fillMaxSize().padding(padding)
+        when {
+            state.loading -> LoadingState(modifier)
+            state.error != null -> ErrorState(state.error!!, viewModel::load, modifier)
+            else -> LazyColumn(modifier, contentPadding = PaddingValues(bottom = 32.dp)) {
+                item {
+                    OutlinedTextField(
+                        value = state.query,
+                        onValueChange = viewModel::search,
+                        placeholder = { Text(stringResource(R.string.ccc_search_hint)) },
+                        leadingIcon = { Icon(Icons.Default.Search, contentDescription = null) },
+                        trailingIcon = {
+                            if (state.query.isNotEmpty()) {
+                                IconButton(onClick = { viewModel.search("") }) {
+                                    Icon(Icons.Default.Close, stringResource(R.string.action_clear))
+                                }
                             }
-                        }
-                    }
-                )
-            } else {
-                TopAppBar(
-                    title = { Text("Catechism (CCC)") },
-                    navigationIcon = {
-                        IconButton(onClick = onBack) {
-                            Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Back")
-                        }
-                    },
-                    actions = {
-                        IconButton(onClick = { isSearchActive = true }) {
-                            Icon(Icons.Default.Search, contentDescription = "Search")
-                        }
-                    },
-                    colors = TopAppBarDefaults.topAppBarColors(
-                        containerColor = MaterialTheme.colorScheme.primary,
-                        titleContentColor = MaterialTheme.colorScheme.onPrimary,
-                        navigationIconContentColor = MaterialTheme.colorScheme.onPrimary,
-                        actionIconContentColor = MaterialTheme.colorScheme.onPrimary
-                    )
-                )
-            }
-        }
-    ) { innerPadding ->
-        Box(modifier = Modifier.fillMaxSize().padding(innerPadding)) {
-            when {
-                uiState.isLoading -> {
-                    CircularProgressIndicator(modifier = Modifier.align(Alignment.Center))
-                }
-                uiState.error != null -> {
-                    ErrorState(
-                        error = uiState.error!!,
-                        onRetry = { viewModel.loadCCC() }
+                        },
+                        singleLine = true,
+                        keyboardOptions = KeyboardOptions(imeAction = ImeAction.Search),
+                        shape = MaterialTheme.shapes.extraSmall,
+                        colors = OutlinedTextFieldDefaults.colors(
+                            unfocusedBorderColor = Kurus.colors.trim,
+                            focusedBorderColor = MaterialTheme.colorScheme.primary
+                        ),
+                        modifier = Modifier.fillMaxWidth().padding(horizontal = 24.dp, vertical = 8.dp)
                     )
                 }
-                else -> {
-                    LazyColumn(
-                        modifier = Modifier.fillMaxSize(),
-                        contentPadding = PaddingValues(16.dp),
-                        verticalArrangement = Arrangement.spacedBy(12.dp)
-                    ) {
-                        items(uiState.filteredEntries, key = { it.id }) { entry ->
-                            CCCEntryCard(entry)
+                if (state.filtered.isEmpty()) item {
+                    MessageState(
+                        stringResource(R.string.ccc_title),
+                        stringResource(R.string.ccc_no_results, state.query.trim())
+                    )
+                }
+                items(state.filtered, key = { it.id }) { entry ->
+                    Row(Modifier.padding(start = 12.dp, end = 24.dp, top = 20.dp, bottom = 20.dp)) {
+                        Text(
+                            entry.id.toString(),
+                            style = MaterialTheme.typography.titleMedium,
+                            color = MaterialTheme.colorScheme.secondary,
+                            textAlign = TextAlign.End,
+                            modifier = Modifier.width(52.dp).padding(end = 12.dp, top = 4.dp)
+                        )
+                        Column(Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(4.dp)) {
+                            Text(entry.text, style = ReadingText)
                         }
                     }
+                    TrimRule(Modifier.padding(start = 64.dp, end = 24.dp), color = MaterialTheme.colorScheme.outlineVariant)
                 }
             }
-        }
-    }
-}
-
-@Composable
-fun CCCEntryCard(entry: CCCEntry) {
-    Card(
-        modifier = Modifier.fillMaxWidth(),
-        elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
-    ) {
-        Column(modifier = Modifier.padding(16.dp)) {
-            Text(
-                text = "Paragraph ${entry.id}",
-                style = MaterialTheme.typography.labelLarge,
-                color = MaterialTheme.colorScheme.primary,
-                fontWeight = FontWeight.Bold
-            )
-            Spacer(modifier = Modifier.height(8.dp))
-            Text(
-                text = entry.text,
-                style = MaterialTheme.typography.bodyLarge,
-                lineHeight = 24.sp
-            )
         }
     }
 }
